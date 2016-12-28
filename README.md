@@ -1,27 +1,21 @@
-# Ember-cli-anybar
+# ember-cli-anybar
 
-This README outlines the details of collaborating on this Ember addon.
+A build notification system built atop [AnyBar](https://github.com/tonsky/AnyBar).
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd ember-cli-anybar`
-* `npm install`
-* `bower install`
+Install AnyBar by following [these instructions](https://github.com/tonsky/AnyBar#download),
+then install `ember-cli-anybar` into your app:
 
-## Running
+```
+ember install ember-cli-anybar
+```
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+## Requirements
 
-## Running Tests
+- [AnyBar App](https://github.com/tonsky/AnyBar)
+- OSX
 
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+## License
 
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+MIT
