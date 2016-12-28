@@ -41,9 +41,13 @@
     "loader.js": "^4.0.10"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember-cli-anybar",
+    "anybar"
   ],
+  "repository": "dollarshaveclub/ember-cli-anybar",
   "dependencies": {
+    "anybar": "^2.0.1",
     "ember-cli-babel": "^5.1.7"
   },
   "ember-addon": {
