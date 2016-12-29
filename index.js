@@ -8,7 +8,7 @@ const exec = require('child_process').exec;
 captureExit.captureExit();
 
 // Open AnyBar (OSX only)
-exec('open -a Anybar', (error, stdout, stderror) => {
+exec('open --hide --background -a AnyBar', (error, stdout, stderror) => {
   if (error) console.error('exec error: ${error}');
 });
 
