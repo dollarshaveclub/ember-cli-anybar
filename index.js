@@ -20,8 +20,6 @@ const pulser = setInterval(() => {
   color = color === 'black' ? 'white' : 'black';
 }, 200);
 
-setTimeout(() => { clearInterval(pulser) }, 50000);
-
 // Back to white on exit
 captureExit.onExit(function() {
   clearInterval(pulser);
