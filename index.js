@@ -15,10 +15,14 @@ exec('open -a Anybar', (error, stdout, stderror) => {
 // Pulse
 let color = 'black';
 
-const pulser = setInterval(() => {
-  anybar(color);
-  color = color === 'black' ? 'white' : 'black';
-}, 200);
+let pulser;
+function pulse() {
+  clearInterval(pulser);
+  pulser = setInterval(() => {
+    anybar(color);
+    color = color === 'black' ? 'white' : 'black';
+  }, 200);
+};
 
 // Back to white on exit
 captureExit.onExit(function() {
@@ -28,6 +32,10 @@ captureExit.onExit(function() {
 
 module.exports = {
   name: 'ember-cli-anybar',
+
+  preBuild() {
+    pulse();
+  },
 
   buildError: function() {
     clearInterval(pulser);
