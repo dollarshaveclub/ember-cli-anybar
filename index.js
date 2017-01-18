@@ -9,7 +9,7 @@ captureExit.captureExit();
 
 // Open AnyBar (OSX only)
 exec('open --hide --background -a AnyBar', (error, stdout, stderror) => {
-  if (error) console.error('exec error: ${error}');
+  if (error) console.error(`exec error: ${error}`);
 });
 
 // Pulse
