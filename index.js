@@ -23,7 +23,7 @@ if (!isOSX) {
   /* AnyBar is an OSX-only application. */
 } else {
   // Open AnyBar
-  exec('open --hide --background -a AnyBar1', (error, stdout, stderror) => {
+  exec('open --hide --background -a AnyBar', (error, stdout, stderror) => {
     if (error) {
       console.error(`
       You have the ember-cli-anybar addon installed but have
