@@ -5,12 +5,7 @@ const anybar = require('anybar');
 const captureExit = require('capture-exit');
 const exec = require('child_process').exec;
 
-captureExit.captureExit();
-
-// Open AnyBar (OSX only)
-exec('open --hide --background -a AnyBar', (error, stdout, stderror) => {
-  if (error) console.error(`exec error: ${error}`);
-});
+const isOSX = require('os').platform() === 'darwin';
 
 // Pulse
 let color = 'black';
@@ -24,27 +19,44 @@ function pulse() {
   }, 200);
 };
 
-// Back to white on exit
-captureExit.onExit(function() {
-  clearInterval(pulser);
-  return anybar('white');
-});
+if (!isOSX) {
+  /* AnyBar is an OSX-only application. */
+} else {
+  // Open AnyBar
+  exec('open --hide --background -a AnyBar1', (error, stdout, stderror) => {
+    if (error) {
+      console.error(`
+      You have the ember-cli-anybar addon installed but have
+      not yet installed the AnyBar application. Please run:
 
-module.exports = {
-  name: 'ember-cli-anybar',
+        brew cask install anybar
+      `);
+    }
+  });
 
-  preBuild() {
-    pulse();
-  },
-
-  buildError: function() {
+  // Back to white on exit
+  captureExit.captureExit();
+  captureExit.onExit(function() {
     clearInterval(pulser);
-    anybar('red');
-  },
+    return anybar('white');
+  });
 
-  postBuild: function() {
-    clearInterval(pulser);
-    anybar('green');
-  },
+  module.exports = {
+    name: 'ember-cli-anybar',
 
-};
+    preBuild() {
+      pulse();
+    },
+
+    buildError: function() {
+      clearInterval(pulser);
+      anybar('red');
+    },
+
+    postBuild: function() {
+      clearInterval(pulser);
+      anybar('green');
+    },
+
+  };
+}
