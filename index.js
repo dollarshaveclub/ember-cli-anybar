@@ -21,6 +21,9 @@ function pulse() {
 
 if (!isOSX) {
   /* AnyBar is an OSX-only application. */
+    module.exports = {
+      name: 'ember-cli-anybar',
+    };
 } else {
   // Open AnyBar
   exec('open --hide --background -a AnyBar', (error, stdout, stderror) => {
@@ -57,6 +60,5 @@ if (!isOSX) {
       clearInterval(pulser);
       anybar('green');
     },
-
   };
 }
