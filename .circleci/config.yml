@@ -17,4 +17,5 @@
      steps:
        - checkout
        - run: npm i
+       - run: bower install
        - run: npm run eslint:ci
