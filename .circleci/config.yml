@@ -26,7 +26,7 @@ jobs:
       - run:
           name: NPM Access ($NPM_TOKEN set in Circle)
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
-      - run: npm install typescript --no-save
+      - run: npm install
       - run: npm run build
       - run: npx dsc-publish-npm-version
 
