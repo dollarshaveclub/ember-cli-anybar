@@ -1,0 +1,43 @@
+defaults: &defaults
+  working_directory: ~/code
+  docker:
+    - image: circleci/node:8
+      environment:
+        NPM_CONFIG_LOGLEVEL: error # make npm commands less noisy
+        JOBS: max # https://gist.github.com/ralphtheninja/f7c45bdee00784b41fed
+
+version: 2
+jobs:
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: npm install @dollarshaveclub/cli --no-save
+      - run: npx dsc-install-npm-token .npmrc
+      - run: npm install
+      - run: npm run eslint:ci
+      - run: npm run build
+      - run: npx dsc-check-package-version
+
+  publish:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: NPM Access ($NPM_TOKEN set in Circle)
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+      - run: npm install
+      - run: npm run build
+      - run: npx dsc-publish-npm-version
+
+workflows:
+  version: 2
+  test_all:
+    jobs:
+      - test
+      - publish:
+          filters:
+            branches:
+              only: master
+          requires:
+            - test
