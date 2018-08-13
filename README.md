@@ -1,6 +1,8 @@
 ember-cli-anybar
 ==============================================================================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/dollarshaveclub/ember-cli-anybar.svg)](https://greenkeeper.io/)
+
 A _non-intrusive_ build notification system built atop [AnyBar](https://github.com/tonsky/AnyBar).
 
 Installation
