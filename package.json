@@ -25,7 +25,7 @@
     "update": "ember update --run-codemods"
   },
   "dependencies": {
-    "anybar": "^3.0.0",
+    "anybar": "^4.0.0",
     "capture-exit": "^2.0.0",
     "ember-cli-babel": "^7.1.0"
   },
